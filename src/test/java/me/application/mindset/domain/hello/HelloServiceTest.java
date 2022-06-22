@@ -17,15 +17,15 @@ class HelloServiceTest {
 	@InjectMocks
 	HelloService helloService;
 
-	Hello fuck = Hello.builder().name("hello1").build();
+	Hello arg = Hello.builder().name("hello1").build();
 	Hello result = new Hello(1L, "hello1");
 
 	@Test
 	void hello() {
-		given(helloRepository.save(fuck)).will(invocation -> result);
+		given(helloRepository.save(arg)).will(invocation -> result);
 
-		helloService.save(fuck);
+		helloService.save(arg);
 
-		then(helloRepository).should(times(1)).save(fuck);
+		then(helloRepository).should(times(1)).save(arg);
 	}
 }
